@@ -42,11 +42,9 @@ async function execute() {
     core.info('Current assignees : [' + assigneeLogins + ']')
     core.info('Will ignore these users : [' + excludeList + ']')
 
-    console.log(context.payload)
     switch (context.payload.action) {
       case 'assigned':
         const newlyAssigned = context.payload.assignee.login
-        console.log('newlyAssigned', newlyAssigned)
 
         const shouldAddReviewer =
           !reviewerLogins?.includes(newlyAssigned) &&
@@ -67,7 +65,6 @@ async function execute() {
         break
       case 'unassigned':
         const newlyUnassigned = context.payload.assignee.login
-        console.log('newlyUnassigned :>> ', newlyUnassigned)
         const shouldRemove =
           reviewerLogins?.includes(newlyUnassigned) &&
           !excludeList.includes(newlyUnassigned)
