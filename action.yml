@@ -1,24 +1,20 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: 'heart'
-  color: 'red'
-
-# Define your inputs here.
+name: 'Sync PR Reviewers with Assignees'
+description:
+  'Synchronize the list of reviewers with the list of assignees on a PR'
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  token:
+    description: 'Github token'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
-
+    default: 'default'
+  exclude:
+    description:
+      'List of Github logins to be ignored during synchronization, separated by
+      a comma'
+    required: false
+    default: ''
 runs:
-  using: node20
-  main: dist/index.js
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'git-pull-request'
+  color: 'red'
